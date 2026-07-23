@@ -4,7 +4,7 @@ $sectionClass .= $flip ? ' order-flip' : '';
 @endphp
 
 @php
-$backgroundImage = !empty($g_hero_sub['image']['url']) ? "linear-gradient(90deg, rgba(121, 68, 12, 0.9) 30%, rgba(121, 68, 12, 0.3) 100%), url({$g_hero_sub['image']['url']})" : '';
+$backgroundImage = !empty($g_hero_sub['image']['url']) ? "linear-gradient(90deg, rgba(63, 0, 0, 1) 40%, rgba(25, 0, 0, 0.3) 100%), url({$g_hero_sub['image']['url']})" : '';
 @endphp
 
 <!-- hero-sub -->

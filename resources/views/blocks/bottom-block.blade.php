@@ -11,7 +11,7 @@ $sectionClass .= $brandbg ? ' section-brand' : '';
 @endphp
 
 @php
-$backgroundImage = !empty($bottom['image']['url']) ? "linear-gradient(90deg, rgba(121, 68, 12, 1) 40%, rgba(121, 68, 12, 0.3) 100%), url({$bottom['image']['url']})" : '';
+$backgroundImage = !empty($bottom['image']['url']) ? "linear-gradient(90deg, rgba(63, 0, 0, 1) 40%, rgba(25, 0, 0, 0.3) 100%), url({$bottom['image']['url']})" : '';
 @endphp
 
 <!-- bottom-block -->

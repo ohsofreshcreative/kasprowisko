@@ -8,7 +8,7 @@ $sectionClass .= $flip ? ' order-flip' : '';
 <section
     data-gsap-anim="section"
     @if(!empty($section_id)) id="{{ $section_id }}" @endif
-    class="hero bg-secondary relative -menu-pt min-h-[85svh] {{ $sectionClass }} {{ $section_class }}">
+    class="hero bg-secondary relative  {{ $sectionClass }} {{ $section_class }}">
 
     @if (!empty($g_hero['use_video']) && !empty($g_hero['video']))
     <video
@@ -23,15 +23,15 @@ $sectionClass .= $flip ? ' order-flip' : '';
         <source src="{{ is_array($g_hero['video']) ? ($g_hero['video']['url'] ?? '') : $g_hero['video'] }}"
             type="{{ is_array($g_hero['video']) ? ($g_hero['video']['mime_type'] ?? 'video/mp4') : 'video/mp4' }}">
     </video>
-    <div class="absolute inset-0 z-10 pointer-events-none" style="background-position:center;background: linear-gradient(90deg, rgba(121, 68, 12, 0.9) 30%, rgba(121, 68, 12, 0.3) 100%);"></div>
+    <div class="absolute inset-0 z-10 pointer-events-none" style="background-position:center;background: linear-gradient(90deg, rgba(63, 0, 0, 1) 40%, rgba(25, 0, 0, 0.3) 100%);"></div>
     @elseif (!empty($g_hero['image']))
     <img src="{{ $g_hero['image']['url'] }}" alt="{{ $g_hero['image']['alt'] ?? '' }}" class="absolute inset-0 w-full h-full object-cover z-0">
-    <div class="absolute inset-0 z-10 pointer-events-none" style="background-position:center;background: linear-gradient(90deg, rgba(121, 68, 12, 0.9) 30%, rgba(121, 68, 12, 0.3) 100%);"></div>
+    <div class="absolute inset-0 z-10 pointer-events-none" style="background-position:center;background: linear-gradient(90deg, rgba(63, 0, 0, 1) 40%, rgba(25, 0, 0, 0.3) 100%);"></div>
     @endif
 
     <div class="__wrapper c-wide grid grid-cols-1 @if(empty($g_hero['image']) || !empty($g_hero['use_video'])) md:grid-cols-1 @else md:grid-cols-2 @endif gap-8 items-center relative z-20">
-        <div class="__content pt-20 pb-10 md:py-30">
-            <h2 data-gsap-element="header" class=" text-white">
+        <div class="__content pt-20 pb-10 md:py-70">
+            <h2 data-gsap-element="header" class="text-white">
                 {{ $g_hero['title'] }}
             </h2>
             <h5 data-gsap-element="txt" class="text-white mt-2">

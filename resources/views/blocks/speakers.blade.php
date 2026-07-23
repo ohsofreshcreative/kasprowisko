@@ -37,7 +37,7 @@ $sectionClass .= ' ' . $background;
 			<div class="grid grid-cols-1 {{ $gridClass }} gap-8 mt-10">
 				@if ($speakersCount === 1)
 				@foreach ($speakers as $item)
-				<div class="__card-single grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-p-dark border-p radius p-10">
+				<div class="__card-single grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-primary-800 border-p radius p-10">
 					<div class="img-wrapper">
 						<img src="{{ $item['img']['url'] }}" alt="{{ $item['img']['alt'] ?? '' }}" class="w-full h-auto radius" />
 					</div>
@@ -49,7 +49,7 @@ $sectionClass .= ' ' . $background;
 				@endforeach
 				@else
 				@foreach ($speakers as $item)
-				<div class="__card relative bg-p-dark border-p radius p-10">
+				<div class="__card relative bg-primary-800 border-p radius p-10">
 					<img src="{{ $item['img']['url'] }}" alt="{{ $item['img']['alt'] ?? '' }}" class="w-full h-auto radius" />
 					<p class="font-bold text-h5 text-white mt-6 mb-4">{{ $item['title'] }}</p>
 					<p class="text-white">{{ $item['txt'] }}</p>
