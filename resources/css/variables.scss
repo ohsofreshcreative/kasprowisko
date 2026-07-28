@@ -110,7 +110,7 @@ body {
 
 	--p-dark: #0F0000;
 	--p-darker: #0F0000;
-	--p-brand: #4C0000;
+	--p-brand: #690909;
 
 
 	/* SECONDARY (czerwona skala) */
@@ -1065,7 +1065,7 @@ textarea {
 	width: 100%;
 	background-color: transparent;
 	border: none;
-	border: 2px solid var(--primary);
+	border: 2px solid var(--p-100);
 	padding: 12px;
 	transition: all 0.2s ease-out;
 	border-radius: 4px;
@@ -1082,7 +1082,7 @@ input[type='tel']:focus,
 input[type='email']:focus,
 textarea:focus {
 	width: 100%;
-	border: 2px solid var(--p-700);
+	border: 2px solid var(--p-300);
 	outline: none;
 	transition: all 0.2s ease-out;
 }
