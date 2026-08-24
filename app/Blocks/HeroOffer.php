@@ -28,16 +28,6 @@ class HeroOffer extends Block
         $hero_offer = new FieldsBuilder('hero-offer');
 
         $hero_offer
-            ->addText('block-title', [
-                'label' => 'Tytuł techniczny (podgląd)',
-                'required' => 0,
-            ])
-
-            ->addAccordion('accordion_content', [
-                'label' => 'Hero - Oferta',
-                'open' => true,
-                'multi_expand' => true,
-            ])
                 ->addTab('Treść', ['placement' => 'top'])
                 ->addGroup('g_herooffer', ['label' => 'Hero - Oferta'])
                     ->addImage('image', [

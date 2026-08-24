@@ -26,15 +26,6 @@ class Table extends Block
 
 		$table
 			->setLocation('block', '==', 'acf/table') // ważne!
-			->addText('block-title', [
-				'label' => 'Tytuł',
-				'required' => 0,
-			])
-			->addAccordion('accordion1', [
-				'label' => 'Tabela',
-				'open' => false,
-				'multi_expand' => true,
-			])
 			/*--- FIELDS ---*/
 			->addTab('Treści', ['placement' => 'top'])
 			->addGroup('g_table', ['label' => ''])
@@ -47,17 +38,20 @@ class Table extends Block
 				'min' => 1,
 				'button_label' => 'Dodaj wiersz'
 			])
-			->addText('col1', [
+			->addWysiwyg('col1', [
 				'label' => 'Kolumna #1',
 			])
-			->addText('col2', [
+			->addWysiwyg('col2', [
 				'label' => 'Kolumna #2',
 			])
-			->addText('col3', [
+			->addWysiwyg('col3', [
 				'label' => 'Kolumna #3',
 			])
 			->endRepeater()
 
+			->addWysiwyg('info', [
+				'label' => 'Informacje pod tabelą',
+			])
 			->endGroup()
 
 			/*--- USTAWIENIA BLOKU ---*/
@@ -94,20 +88,20 @@ class Table extends Block
 				'ui_off_text' => 'Nie',
 			])
 			->addSelect('background', [
-                'label' => 'Kolor tła',
-                'choices' => [
-                    'none' => 'Brak (domyślne)',
-                    'section-white' => 'Białe',
-                    'section-light' => 'Jasne',
-                    'section-gray' => 'Szare',
-                    'section-brand' => 'Marki',
-                    'section-gradient' => 'Gradient',
-                    'section-dark' => 'Ciemne',
-                ],
-                'default_value' => 'none',
-                'ui' => 0, // Ulepszony interfejs
-                'allow_null' => 0,
-            ]);
+				'label' => 'Kolor tła',
+				'choices' => [
+					'none' => 'Brak (domyślne)',
+					'section-white' => 'Białe',
+					'section-light' => 'Jasne',
+					'section-gray' => 'Szare',
+					'section-brand' => 'Marki',
+					'section-gradient' => 'Gradient',
+					'section-dark' => 'Ciemne',
+				],
+				'default_value' => 'none',
+				'ui' => 0, // Ulepszony interfejs
+				'allow_null' => 0,
+			]);
 
 		return $table;
 	}

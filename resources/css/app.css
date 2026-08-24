@@ -120,6 +120,9 @@
 
 
 @source "../views/";
+/* Klasy wpisywane w locie w polach ACF (np. section_class) nie trafiają do
+   skanera Tailwinda, więc trzeba je wymusić — inaczej nie istnieją na froncie. */
+@source inline("hidden");
 @source "../../app/";
 
 @import "../css/variables.scss";
