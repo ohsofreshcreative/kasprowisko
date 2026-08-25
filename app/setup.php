@@ -33,7 +33,7 @@ add_filter('acf/register_block_type_args', function ($block) {
 	$block['acf_block_version'] = 3;
 	$block['api_version'] = 3;
 	$block['expanded_editor_buttons'] = true;
-	$block['hide_fields_in_sidebar'] = false;
+	$block['hide_fields_in_sidebar'] = true;
 	$block['auto_inline_editing'] = false;
 
 	return $block;

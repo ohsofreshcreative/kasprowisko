@@ -1,5 +1,11 @@
-@import "tailwindcss";
-
+/**
+ * Style edytora bloków.
+ *
+ * Importujemy cały `app.css`, żeby podglądy bloków ACF w edytorze wyglądały
+ * tak samo jak na froncie — inaczej edytor dostaje samego "gołego" Tailwinda,
+ * bez tokenów motywu (`@theme`), `@source` i stylów bloków, przez co nagłówki
+ * i przyciski renderują się bez stylów.
+ */
 @import './app.css';
 
 /*--- Poprawki wyłącznie dla edytora ---*/
@@ -212,39 +218,62 @@
 	font: 500 12px/1.4 ui-monospace, SFMono-Regular, Menlo, monospace;
 	letter-spacing: 0.04em;
 }
-.editor-styles-wrapper :is(h1, h2, h3, h4, h5, h6, [class*="text-h"]) {
-	color: #fff !important;
-	mix-blend-mode: difference;
-}
 
 /**
- * Marginesy zewnętrzne sekcji nie mają sensu w edytorze.
+ * Tło strony nie należy do kanwy edytora.
  *
- * Szablony używają ujemnych marginesów (np. md:-mt-20), żeby sekcje nachodziły
- * na siebie na froncie. W kanwie każdy blok jest osobną kartą z własną ramką,
- * więc takie nachodzenie tylko rozwala układ i wchodzi na sąsiedni blok.
+ * Front ustawia `background-color: var(--bg)` na html i body (variables.scss:84).
+ * Przez import app.css trafia to również do iframe'a i cała kanwa dostaje kolor
+ * tła strony. Tła sekcji (.section-*) mają własne reguły i zostają nietknięte.
  *
- * Celujemy w bezpośrednie dziecko wrappera bloku, czyli w korzeń sekcji —
- * odstępy wewnątrz sekcji zostają nietknięte.
+ * Nadpisujemy html i body osobno, bo tło elementu głównego jest propagowane
+ * na całą kanwę i samo body by nie wystarczyło.
  */
-.editor-styles-wrapper .block-editor-block-list__block[data-type^="acf/"] > * {
-	margin-top: 0 !important;
-	margin-bottom: 0 !important;
+:root:has(.editor-styles-wrapper),
+.editor-styles-wrapper {
+	background-color: #fff !important;
 }
 
-/**
- * Blok ukryty na froncie (klasa .hidden).
- *
- * Na froncie ma nie istnieć, ale w edytorze musi zostać widoczny i edytowalny —
- * inaczej redaktor nie ma jak go z powrotem odkryć. Pokazujemy go przygaszonego,
- * na szarym tle i z przerywaną ramką.
- */
-.editor-styles-wrapper .block-editor-block-list__block[data-type^="acf/"]:has(.hidden) {
-	background: #f1f3f5 !important;
-	border-style: dashed !important;
-	opacity: 0.25;
+/*--- APPENDER BLOKÓW ---*/
+
+.block-editor-block-list__layout .block-editor-default-block-appender,
+.block-editor-block-list__layout .block-list-appender,
+.block-editor-default-block-appender,
+.block-list-appender {
+	display: flex !important;
+	visibility: visible !important;
+	opacity: 1 !important;
+	min-height: 64px;
+	margin: 18px 0 4px !important;
+	border: 2px dashed #b8c7d1 !important;
+	border-radius: 8px !important;
+	background: #f7fbfd !important;
 }
 
-.editor-styles-wrapper .block-editor-block-list__block[data-type^="acf/"] .hidden {
-	display: revert !important;
+.block-editor-block-list__layout .block-editor-default-block-appender .block-editor-inserter,
+.block-editor-block-list__layout .block-list-appender .block-editor-inserter,
+.block-editor-block-list__layout .block-editor-default-block-appender .block-editor-button-block-appender,
+.block-editor-block-list__layout .block-list-appender .block-editor-button-block-appender,
+.block-editor-block-list__layout .block-editor-default-block-appender__content,
+.block-editor-default-block-appender .block-editor-inserter,
+.block-list-appender .block-editor-inserter,
+.block-editor-default-block-appender .block-editor-button-block-appender,
+.block-list-appender .block-editor-button-block-appender,
+.block-editor-default-block-appender__content {
+	display: flex !important;
+	align-items: center;
+	width: 100%;
+	min-height: 60px;
+	opacity: 1 !important;
+}
+
+.block-editor-block-list__layout .block-editor-default-block-appender .block-editor-button-block-appender,
+.block-editor-block-list__layout .block-list-appender .block-editor-button-block-appender,
+.block-editor-default-block-appender .block-editor-button-block-appender,
+.block-list-appender .block-editor-button-block-appender {
+	justify-content: center;
+	visibility: visible !important;
+	opacity: 1 !important;
+	color: #527080 !important;
+	font-size: 13px !important;
 }
