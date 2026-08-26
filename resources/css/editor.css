@@ -10,6 +10,16 @@
 
 /*--- Poprawki wyłącznie dla edytora ---*/
 
+/**
+ * Tytuł wpisu/strony ma zachować kontrast niezależnie od tła kanwy.
+ * Biały kolor bazowy z `difference` daje ciemny tekst na jasnym tle
+ * i jasny tekst na ciemnym tle.
+ */
+.editor-styles-wrapper :is(.wp-block-post-title, .editor-post-title__input) {
+	color: #fff !important;
+	mix-blend-mode: difference;
+}
+
 .editor-styles-wrapper .block-editor-block-list__layout.is-root-container > :where(:not(.alignleft):not(.alignright):not(.alignfull)) {
     list-style-type: disc !important;
 }
@@ -229,9 +239,8 @@
  * Nadpisujemy html i body osobno, bo tło elementu głównego jest propagowane
  * na całą kanwę i samo body by nie wystarczyło.
  */
-:root:has(.editor-styles-wrapper),
-.editor-styles-wrapper {
-	background-color: #fff !important;
+.image-reveal-wrapper img {
+	opacity: 1 !important;
 }
 
 /*--- APPENDER BLOKÓW ---*/
