@@ -36,12 +36,12 @@ $sectionClass .= $brandbg ? ' section-brand' : '';
 				@foreach ($g_cards['r_cards'] as $item)
 				<div class="__card relative bg-p-dark b-shadow p-8">
 					<img class="mb-6" src="{{ $item['image']['url'] }}" alt="{{ $item['image']['alt'] ?? '' }}" />
-					<h6 class="m-title text-white">{{ $item['header'] }}</h6>
-					<p class="text-white">{{ $item['text'] }}</p>
+					<h6 class="m-title text-white m-header">{{ $item['header'] }}</h6>
+					<p class="text-white text-sm">{{ $item['text'] }}</p>
 
-					@if (!empty($item['button']))
+				<!-- 	@if (!empty($item['button']))
 					<a data-gsap-element="btn" class="underline-btn m-btn" href="{{ $item['button']['url'] }}" target="{{ $item['button']['target'] }}">{{ $item['button']['title'] }}</a>
-					@endif
+					@endif -->
 				</div>
 				@endforeach
 			</div>

@@ -29,7 +29,7 @@ use App\Walkers\MobileDropdownWalker;
 
 
 			<div class="">
-				<a href="/zarejestruj-sie//" class="block w-full white-btn-s !px-4">
+				<a href="/produkt/zarejestruj-sie/" class="block w-full white-btn-s !px-4">
 					Zarejestruj się
 				</a>
 			</div>
@@ -99,7 +99,7 @@ use App\Walkers\MobileDropdownWalker;
 			@endif
 
 			<div class="mt-8">
-				<a href="/zarejestruj-sie/" class="block w-full second-btn">
+				<a href="/produkt/zarejestruj-sie/" class="block w-full second-btn">
 					Zarejestruj się
 				</a>
 			</div>
