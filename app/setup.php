@@ -329,3 +329,12 @@ add_action('acf/init', function () {
         ]);
     }
 });
+
+/*--- REDIRECT ---*/
+
+add_action('template_redirect', function () {
+    if (is_page('zarejestruj-sie')) {
+        wp_safe_redirect(home_url('/produkt/zarejestruj-sie/'), 301);
+        exit;
+    }
+});
