@@ -333,8 +333,11 @@ add_action('acf/init', function () {
 /*--- REDIRECT ---*/
 
 add_action('template_redirect', function () {
-    if (is_page('zarejestruj-sie')) {
+    // Dopasowanie po samym URL, bo is_page() zawodzi, gdy strona nie istnieje (404)
+    $path = trim((string) parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH), '/');
+
+    if ($path === 'zarejestruj-sie' || is_page('zarejestruj-sie')) {
         wp_safe_redirect(home_url('/produkt/zarejestruj-sie/'), 301);
         exit;
     }
-});
+}, 1);
