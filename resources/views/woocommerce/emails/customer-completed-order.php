@@ -28,9 +28,9 @@ do_action( 'woocommerce_email_header', $email_heading, $email ); ?>
 
 <p>Dzień dobry,</p>
 
-<p>bardzo dziękujemy za rejestrację na konferencję Oparzenia 2026, która odbędzie się w dniach 21-23 października 2026 r. w Hotelu Bachleda Kasprowy, Zakopane.</b></p>
+<p>bardzo dziękujemy za rejestrację na konferencję Kasprowisko 2027, która odbędzie się w dniach 17-20 marca 2027 r. w Hotelu Gołębkiewskim, Zakopane.</b></p>
 
-<p>Status Twojej rejestracji na konferencję Oparzenia 2026 został zmieniony na:
+<p>Status Twojej rejestracji na konferencję Kasprowisko 2027 został zmieniony na:
 
 <span style="color:#36d100;">OPŁACONY</span></p>
 
