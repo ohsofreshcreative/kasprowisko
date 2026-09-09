@@ -28,7 +28,7 @@ do_action( 'woocommerce_email_header', $email_heading ); ?>
 
 <p>Dzień dobry,</p>
 
-<p>bardzo dziękujemy za rejestrację na konferencję Kasprowisko 2027, która odbędzie się w dniach 17-20 marca 2027 r. w Hotelu Gołębkiewskim, Zakopane. <b>Twoje zgłoszenie zostało przyjęte.</b></p>
+<p>bardzo dziękujemy za rejestrację na konferencję Kasprowisko 2027, która odbędzie się w dniach 17-20 marca 2027 r. w Hotelu Gołębiewski, Karpacz. <b>Twoje zgłoszenie zostało przyjęte.</b></p>
 
 <p>Status Twojej rejestracji na konferencję Kasprowisko 2027 został zmieniony na:
 
