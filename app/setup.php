@@ -259,6 +259,17 @@ add_filter('woocommerce_add_to_cart_validation', function ($passed, $product_id,
 
 /*--- CART BEHAVIOR ---*/
 
+add_action('template_redirect', function () {
+    if (! function_exists('is_cart') || ! function_exists('WC') || ! is_cart()) {
+        return;
+    }
+
+    if (WC()->cart && WC()->cart->is_empty()) {
+        wp_safe_redirect(home_url('/produkt/zarejestruj-sie/'), 302);
+        exit;
+    }
+});
+
 add_filter('woocommerce_add_to_cart_redirect', function () {
     return wc_get_checkout_url();
 });
