@@ -1,2 +1,24 @@
 .home-about {
 }
+
+div.__group:nth-child(1) > div:nth-child(2) {
+	align-items: center;
+}
+
+.partners .__group > .grid > :only-child {
+	grid-column: 1 / -1;
+	justify-self: center;
+	width: calc((100% - var(--spacing) * 8) / 2);
+}
+
+@media (min-width: 48rem) {
+	.partners .__group > .grid > :only-child {
+		width: calc((100% - var(--spacing) * 16) / 3);
+	}
+}
+
+@media (min-width: 64rem) {
+	.partners .__group > .grid > :only-child {
+		width: calc((100% - var(--spacing) * 24) / 4);
+	}
+}

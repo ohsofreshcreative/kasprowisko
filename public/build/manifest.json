@@ -4,7 +4,7 @@
     "src": "editor.deps.json"
   },
   "resources/css/app.css": {
-    "file": "assets/app-BAidvoT5.css",
+    "file": "assets/app-DN-jXxod.css",
     "name": "app",
     "names": [
       "app.css"
@@ -13,7 +13,7 @@
     "isEntry": true
   },
   "resources/css/editor.css": {
-    "file": "assets/editor-CJsO_NgG.css",
+    "file": "assets/editor-DeNzUC8p.css",
     "name": "editor",
     "names": [
       "editor.css"
