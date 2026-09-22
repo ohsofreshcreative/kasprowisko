@@ -8,7 +8,7 @@ use App\Walkers\MobileDropdownWalker;
 	<!-- Desktop Header -->
     <div class="items-center justify-between hidden h-max py-4 px-6 mx-auto lg:flex">
 
-		<a class="brand max-w-[144px] xl:max-w-[188px] shrink-0" href="{{ home_url('/') }}">
+		<a class="brand max-w-[144px] xl:max-w-[188px] shrink-0 bg-white rounded-md px-4 py-2" href="{{ home_url('/') }}">
 			@if ($logo)
 			<img src="{{ $logo['url'] }}" alt="{{ $logo['alt'] ?? 'Logo' }}" class="w-auto h-16">
 			@else
@@ -37,7 +37,7 @@ use App\Walkers\MobileDropdownWalker;
 
 	<!-- Mobile Header Bar -->
 	<div class="flex items-center justify-between p-4 mobile-menu fixed-top lg:hidden">
-		<a class="brand max-w-[176px] shrink-0" href="{{ home_url('/') }}">
+		<a class="brand max-w-[176px] shrink-0  bg-white rounded-md px-4 py-2" href="{{ home_url('/') }}">
 			@if ($logo)
 			<img src="{{ $logo['url'] }}" alt="{{ $logo['alt'] ?? 'Logo' }}" class="w-auto h-16">
 			@else
