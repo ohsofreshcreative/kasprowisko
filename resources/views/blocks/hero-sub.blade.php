@@ -11,9 +11,9 @@ $backgroundImage = !empty($g_hero_sub['image']['url']) ? "linear-gradient(90deg,
 
 <section data-gsap-anim="section" @if(!empty($section_id)) id="{{ $section_id }}" @endif class="b-hero-sub relative {{ $sectionClass }} {{ $section_class }}" style="background-image: {{ $backgroundImage }}; background-size: cover; background-position: center;">
 
-	<div class="__wrapper c-main {{ !empty($g_hero_sub['image']) ? 'py-50' : '' }}">
+	<div class="__wrapper c-main grid grid-cols-1 md:grid-cols-2 {{ !empty($g_hero_sub['image']) ? 'py-50' : '' }}">
 
-		<div class="__content w-full sm:w-3/4 relative z-10">
+		<div class="__content relative z-10">
 			
 			<h1 data-gsap-element="header" class="text-white m-header">{{ $g_hero_sub['header'] }}</h1>
 
