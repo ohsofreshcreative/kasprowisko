@@ -257,6 +257,8 @@
  * Nadpisujemy html i body osobno, bo tło elementu głównego jest propagowane
  * na całą kanwę i samo body by nie wystarczyło.
  */
+html,
+body,
 :root:has(.editor-styles-wrapper),
 .editor-styles-wrapper {
 	background: #fff !important;
