@@ -14,7 +14,11 @@ $customClass = $block->data['className'] ?? '';
 	<div class="__wrapper c-main relative">
 		<div class="__col grid grid-cols-1 lg:grid-cols-2 items-center gap-10">
 
-			@if (!empty($g_video['video']))
+			@if (($g_video['media_type'] ?? 'video') === 'image' && !empty($g_video['image']))
+			<div class="">
+				<img class="object-cover w-full" src="{{ $g_video['image']['url'] }}" alt="{{ $g_video['image']['alt'] ?? '' }}">
+			</div>
+			@elseif (($g_video['media_type'] ?? 'video') === 'video' && !empty($g_video['video']))
 			<div class="">
 				{!! $g_video['video'] !!}
 			</div>

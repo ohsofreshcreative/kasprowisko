@@ -43,8 +43,28 @@ class Video extends Block
 				'label' => 'Przycisk',
 				'return_format' => 'array',
 			])
+			->addSelect('media_type', [
+				'label' => 'Rodzaj materiału',
+				'choices' => [
+					'video' => 'Wideo',
+					'image' => 'Obraz',
+				],
+				'default_value' => 'video',
+				'ui' => 1,
+			])
 			->addOembed('video', [
 				'label' => 'Wideo (oEmbed)',
+				'conditional_logic' => [
+					[[ 'field' => 'media_type', 'operator' => '==', 'value' => 'video' ]]
+				],
+			])
+			->addImage('image', [
+				'label' => 'Obraz',
+				'return_format' => 'array',
+				'preview_size' => 'medium',
+				'conditional_logic' => [
+					[[ 'field' => 'media_type', 'operator' => '==', 'value' => 'image' ]]
+				],
 			])
 
 			->endGroup()

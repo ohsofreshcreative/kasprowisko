@@ -13,7 +13,7 @@ $sectionClass .= ' ' . $background;
 
 <!--- invitation -->
 
-<section data-gsap-anim="section" @if(!empty($section_id)) id="{{ $section_id }}" @endif class="b-invitation relative -smt {{ $sectionClass }} {{ $section_class }}">
+<section data-gsap-anim="section" @if(!empty($section_id)) id="{{ $section_id }}" @endif class="b-invitation bg-brand section-py relative -smt {{ $sectionClass }} {{ $section_class }}">
 
 	<div class="__wrapper c-main relative">
 		<div class="__content order2">
@@ -36,7 +36,7 @@ $sectionClass .= ' ' . $background;
 					<img src="{{ $persona['img']['url'] }}" alt="{{ $persona['img']['alt'] ?? $persona['header'] }}" class="w-20 h-20 object-cover rounded-full">
 					@endif
 				</div>
-				<div class="">
+				<div class="text-white">
 					<p class="text-xl font-semibold">{{ $persona['title'] }}</p>
 					<p class="">{!! $persona['txt'] !!}</p>
 				</div>

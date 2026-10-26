@@ -22,7 +22,7 @@ $sectionClass = '';
 			</div>
 			<div data-gsap-element="form" class="__form">
 				<h3 class="text-white">{{ $g_contact_2['title'] }}</h3>
-				<div class="contact-form-container mt-4">
+				<div class="contact-form-container text-white mt-4">
 					{!! do_shortcode($g_contact_2['shortcode']) !!}
 				</div>
 			</div>

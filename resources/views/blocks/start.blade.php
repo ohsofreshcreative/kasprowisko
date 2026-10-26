@@ -11,13 +11,32 @@ $backgroundImage = !empty($g_start['image']['url']) ? "linear-gradient(90deg, rg
 
 <section data-gsap-anim="section" @if(!empty($section_id)) id="{{ $section_id }}" @endif class="b-start relative {{ $sectionClass }} {{ $section_class }}" style="background-image: {{ $backgroundImage }}; background-size: cover; background-position: center;">
 
-	<div class="__wrapper c-main grid grid-cols-1 md:grid-cols-2 items-center {{ !empty($g_start['image']) ? 'py-50' : '' }}">
+	<div class="__wrapper c-main grid grid-cols-1 md:grid-cols-2 items-center gap-10 {{ !empty($g_start['image']) ? 'py-50' : '' }}">
 
 		<div class="__content relative z-10">
 			
 			<h1 data-gsap-element="header" class="text-white m-header">{{ $g_start['header'] }}</h1>
 
 			<div data-gsap-element="text" class="text-white text-xl">{{ strip_tags($g_start['text']) }}</div>
+
+            <div data-gsap-element="info" class="__info flex flex-col md:flex-row gap-6 mt-6">
+                <div class="flex items-center gap-2">
+                    <div>
+                        <img src="/wp-content/uploads/2025/11/calendar.svg" />
+                    </div>
+                    <div class="text-white">
+                        {!! $g_hero['date'] !!}
+                    </div>
+                </div>
+                <div class="flex items-center gap-2">
+                    <div>
+                        <img src="/wp-content/uploads/2025/11/place.svg" />
+                    </div>
+                    <div class="">
+                        <a class="text-white !underline" target="_blank" href="{!! $g_hero['link'] !!}">{!! $g_hero['place'] !!}</a>
+                    </div>
+                </div>
+            </div>
 
 			@if (!empty($g_start['button1']))
 			<div class="inline-buttons m-btn">

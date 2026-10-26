@@ -43,6 +43,9 @@ class Start extends Block
 				'toolbar' => 'full', // 'basic', 'full'
 				'media_upload' => true,
 			])
+			->addText('date', ['label' => 'Data'])
+			->addText('place', ['label' => 'Miejsce'])
+			->addText('link', ['label' => 'Link do miejsca'])
 			->addLink('button1', [
 				'label' => 'Przycisk #1',
 				'return_format' => 'array',

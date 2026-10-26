@@ -18,7 +18,9 @@
 		@if (!empty($g_video['txt']))
 		<p class="acf-preview__txt">{{ wp_trim_words(wp_strip_all_tags($g_video['txt']), 24) }}</p>
 		@endif
-		@if (!empty($g_video['video']))
+		@if (($g_video['media_type'] ?? 'video') === 'image' && !empty($g_video['image']))
+		<p>Obraz</p>
+		@elseif (($g_video['media_type'] ?? 'video') === 'video' && !empty($g_video['video']))
 		<p>Wideo</p>
 		@endif
 		@if (!empty($g_video['button']['title']))
