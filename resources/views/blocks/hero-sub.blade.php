@@ -29,6 +29,10 @@ $backgroundImage = !empty($g_hero_sub['image']['url']) ? "linear-gradient(90deg,
 			</div>
 			@endif
 		</div>
+
+		<div class="contact-form-container mt-4">
+				{!! do_shortcode('[contact-form-7 id="4589bd2" title="Contact - EN"]') !!}
+			</div>
 	</div>
 
 </section>
