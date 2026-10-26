@@ -9,29 +9,16 @@
 		@includeIf('partials.block-preview-settings')
 	</div>
 	<div class="acf-preview__content">
-		@if (!empty($g_start['use_video']) && !empty($g_start['video']))
-		<p>Wideo</p>
-		@else
 		@if (!empty($g_start['image']['ID']))
 		<figure class="acf-preview__media m-0">{!! wp_get_attachment_image($g_start['image']['ID'], 'thumbnail', false, ['class' => 'h-20 w-32 object-cover']) !!}</figure>
 		@elseif (!empty($g_start['image']['url']))
 		<figure class="acf-preview__media m-0"><img src="{{ $g_start['image']['url'] }}" alt="{{ $g_start['image']['alt'] ?? '' }}" class="h-20 w-32 object-cover"></figure>
 		@endif
+		@if (!empty($g_start['header']))
+		<p class="text-h5">{{ $g_start['header'] }}</p>
 		@endif
-		@if (!empty($g_start['title']))
-		<p class="text-h5">{{ $g_start['title'] }}</p>
-		@endif
-		@if (!empty($g_start['subtitle']))
-		<p>{{ wp_strip_all_tags($g_start['subtitle']) }}</p>
-		@endif
-		@if (!empty($g_start['txt']))
-		<p>{{ wp_strip_all_tags($g_start['txt']) }}</p>
-		@endif
-		@if (!empty($g_start['date']))
-		<p>{{ wp_strip_all_tags($g_start['date']) }}</p>
-		@endif
-		@if (!empty($g_start['place']))
-		<p>{{ wp_strip_all_tags($g_start['place']) }}</p>
+		@if (!empty($g_start['text']))
+		<p>{{ wp_strip_all_tags($g_start['text']) }}</p>
 		@endif
 		@if (!empty($g_start['button1']['title']) || !empty($g_start['button2']['title']))
 		<div class="acf-preview-actions">
