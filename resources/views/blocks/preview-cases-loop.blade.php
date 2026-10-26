@@ -6,7 +6,7 @@
 			<div class="acf-preview__title">Lista realizacji</div>
 			<span class="acf-preview__slug">acf/cases-loop</span>
 		</div>
-		@include('partials.block-preview-settings')
+		@includeIf('partials.block-preview-settings')
 	</div>
 	<div class="acf-preview__content">
 		<p>Lista realizacji pobierana automatycznie</p>

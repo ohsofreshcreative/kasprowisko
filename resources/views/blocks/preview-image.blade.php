@@ -6,11 +6,11 @@
 			<div class="acf-preview__title">Obraz</div>
 			<span class="acf-preview__slug">acf/image</span>
 		</div>
-		@include('partials.block-preview-settings')
+		@includeIf('partials.block-preview-settings')
 	</div>
 	<div class="acf-preview__content">
 		@if (!empty($g_image['image']['ID']))
-		<figure class="acf-preview__media m-0">{!! wp_get_attachment_image($g_image['image']['ID'], 'thumbnail', false, ['class' => 'h-20 w-32 object-contain']) !!}</figure>
+		<figure class="acf-preview__media m-0">{!! wp_get_attachment_image($g_image['image']['ID'], 'thumbnail', false, ['class' => 'h-20 w-32 object-cover']) !!}</figure>
 		@endif
 	</div>
 </div>

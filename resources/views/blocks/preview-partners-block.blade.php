@@ -10,7 +10,7 @@ $r_partners = function_exists('get_field') ? get_field('r_partners', 'option') :
 			<div class="acf-preview__title">Partnerzy</div>
 			<span class="acf-preview__slug">acf/partners-block</span>
 		</div>
-		@include('partials.block-preview-settings')
+		@includeIf('partials.block-preview-settings')
 	</div>
 	<div class="acf-preview__content">
 		<p>Logotypy edytowane w menu „Partnerzy”</p>
@@ -22,9 +22,9 @@ $r_partners = function_exists('get_field') ? get_field('r_partners', 'option') :
 			<div class="acf-preview__logo-list flex flex-wrap">
 				@foreach (array_slice((array) $group['logos'], 0, 8) as $logo)
 				@if (!empty($logo['img']['ID']))
-				<figure class="acf-preview__media m-0">{!! wp_get_attachment_image($logo['img']['ID'], 'thumbnail', false, ['class' => 'h-20 w-32 object-contain']) !!}</figure>
+				<figure class="acf-preview__media m-0">{!! wp_get_attachment_image($logo['img']['ID'], 'thumbnail', false, ['class' => 'h-20 w-32 object-cover']) !!}</figure>
 				@elseif (!empty($logo['img']['url']))
-				<figure class="acf-preview__media m-0"><img src="{{ $logo['img']['url'] }}" alt="{{ $logo['img']['alt'] ?? '' }}" class="h-20 w-32 object-contain"></figure>
+				<figure class="acf-preview__media m-0"><img src="{{ $logo['img']['url'] }}" alt="{{ $logo['img']['alt'] ?? '' }}" class="h-20 w-32 object-cover"></figure>
 				@endif
 				@endforeach
 			</div>

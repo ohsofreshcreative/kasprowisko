@@ -6,7 +6,7 @@
 			<div class="acf-preview__title">Realizacje - Slider</div>
 			<span class="acf-preview__slug">acf/cases-slider</span>
 		</div>
-		@include('partials.block-preview-settings')
+		@includeIf('partials.block-preview-settings')
 	</div>
 	<div class="acf-preview__content">
 		@if (!empty($title))

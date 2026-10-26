@@ -6,7 +6,7 @@
 			<div class="acf-preview__title">Mapa</div>
 			<span class="acf-preview__slug">acf/map</span>
 		</div>
-		@include('partials.block-preview-settings')
+		@includeIf('partials.block-preview-settings')
 	</div>
 	<div class="acf-preview__content">
 		@if (!empty($g_map['title']))

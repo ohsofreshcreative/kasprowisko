@@ -6,13 +6,13 @@
 			<div class="acf-preview__title">Hero</div>
 			<span class="acf-preview__slug">acf/hero</span>
 		</div>
-		@include('partials.block-preview-settings')
+		@includeIf('partials.block-preview-settings')
 	</div>
 	<div class="acf-preview__content">
 		@if (!empty($g_hero['use_video']) && !empty($g_hero['video']))
 		<p>Wideo</p>
 		@elseif (!empty($g_hero['image']['ID']))
-		<figure class="acf-preview__media m-0">{!! wp_get_attachment_image($g_hero['image']['ID'], 'thumbnail', false, ['class' => 'h-20 w-32 object-contain']) !!}</figure>
+		<figure class="acf-preview__media m-0">{!! wp_get_attachment_image($g_hero['image']['ID'], 'thumbnail', false, ['class' => 'h-20 w-32 object-cover']) !!}</figure>
 		@endif
 		@if (!empty($g_hero['title']))
 		<p class="text-h5">{{ $g_hero['title'] }}</p>
@@ -21,7 +21,7 @@
 		<p>{{ wp_strip_all_tags($g_hero['subtitle']) }}</p>
 		@endif
 		@if (!empty($g_hero['txt']))
-		<p>{{ wp_trim_words(wp_strip_all_tags($g_hero['txt']), 24) }}</p>
+		<p class="acf-preview__txt">{{ wp_trim_words(wp_strip_all_tags($g_hero['txt']), 24) }}</p>
 		@endif
 		@if (!empty($g_hero['date']))
 		<p>{{ wp_strip_all_tags($g_hero['date']) }}</p>

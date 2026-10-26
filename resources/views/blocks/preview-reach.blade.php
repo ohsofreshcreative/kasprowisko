@@ -6,13 +6,13 @@
 			<div class="acf-preview__title">Dołącz do nas</div>
 			<span class="acf-preview__slug">acf/reach</span>
 		</div>
-		@include('partials.block-preview-settings')
+		@includeIf('partials.block-preview-settings')
 	</div>
 	<div class="acf-preview__content">
 		@if (!empty($g_reach_1['image']['ID']))
-		<figure class="acf-preview__media m-0">{!! wp_get_attachment_image($g_reach_1['image']['ID'], 'thumbnail', false, ['class' => 'h-20 w-32 object-contain']) !!}</figure>
+		<figure class="acf-preview__media m-0">{!! wp_get_attachment_image($g_reach_1['image']['ID'], 'thumbnail', false, ['class' => 'h-20 w-32 object-cover']) !!}</figure>
 		@elseif (!empty($g_reach_1['image']['url']))
-		<figure class="acf-preview__media m-0"><img src="{{ $g_reach_1['image']['url'] }}" alt="{{ $g_reach_1['image']['alt'] ?? '' }}" class="h-20 w-32 object-contain"></figure>
+		<figure class="acf-preview__media m-0"><img src="{{ $g_reach_1['image']['url'] }}" alt="{{ $g_reach_1['image']['alt'] ?? '' }}" class="h-20 w-32 object-cover"></figure>
 		@endif
 		@if (!empty($g_reach_1['title']))
 		<p class="text-h5">{{ $g_reach_1['title'] }}</p>
@@ -21,7 +21,7 @@
 		<p>{{ $g_reach_1['header'] }}</p>
 		@endif
 		@if (!empty($g_reach_1['txt']))
-		<p>{{ wp_trim_words(wp_strip_all_tags($g_reach_1['txt']), 24) }}</p>
+		<p class="acf-preview__txt">{{ wp_trim_words(wp_strip_all_tags($g_reach_1['txt']), 24) }}</p>
 		@endif
 		@if (!empty($g_reach_1['person']))
 		<p>{{ $g_reach_1['person'] }}</p>

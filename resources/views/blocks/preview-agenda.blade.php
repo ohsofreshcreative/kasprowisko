@@ -6,7 +6,7 @@
 			<div class="acf-preview__title">Agenda2</div>
 			<span class="acf-preview__slug">acf/agenda</span>
 		</div>
-		@include('partials.block-preview-settings')
+		@includeIf('partials.block-preview-settings')
 	</div>
 	<div class="acf-preview__content">
 		@if (!empty($agenda_data['header1']))
@@ -23,16 +23,19 @@
 		@if (!empty($agenda_data['tabs']))
 		<div class="acf-preview__grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
 			@foreach (array_slice((array) $agenda_data['tabs'], 0, 4) as $item)
-			<div class="acf-preview__card">
+			<div class="acf-preview__card flex flex-col gap-2">
 				@if (!empty($item['day']))
-				<p class="text-h5">{{ $item['day'] }}</p>
+				<p class="text-h6">{{ $item['day'] }}</p>
 				@endif
 				@if (!empty($item['date']))
-				<p>{{ $item['date'] }}</p>
+				<p class="acf-preview__txt">{{ $item['date'] }}</p>
 				@endif
 			</div>
 			@endforeach
 		</div>
+		@if (count((array) $agenda_data['tabs']) > 4)
+		<p>+ {{ count((array) $agenda_data['tabs']) - 4 }} kolejnych elementów</p>
+		@endif
 		@endif
 		<p>Treść agendy pobierana z ustawień (Opcje → Agenda)</p>
 	</div>

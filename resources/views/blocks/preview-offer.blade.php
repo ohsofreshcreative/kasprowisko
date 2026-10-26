@@ -6,7 +6,7 @@
 			<div class="acf-preview__title">Oferta - Kafelki</div>
 			<span class="acf-preview__slug">acf/offer</span>
 		</div>
-		@include('partials.block-preview-settings')
+		@includeIf('partials.block-preview-settings')
 	</div>
 	<div class="acf-preview__content">
 		@if (!empty($subtitle))

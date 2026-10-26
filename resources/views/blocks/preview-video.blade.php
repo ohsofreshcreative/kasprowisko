@@ -6,7 +6,7 @@
 			<div class="acf-preview__title">Wideo</div>
 			<span class="acf-preview__slug">acf/video</span>
 		</div>
-		@include('partials.block-preview-settings')
+		@includeIf('partials.block-preview-settings')
 	</div>
 	<div class="acf-preview__content">
 		@if (!empty($g_video['subtitle']))
@@ -16,7 +16,7 @@
 		<p class="text-h5">{{ $g_video['title'] }}</p>
 		@endif
 		@if (!empty($g_video['txt']))
-		<p>{{ wp_trim_words(wp_strip_all_tags($g_video['txt']), 24) }}</p>
+		<p class="acf-preview__txt">{{ wp_trim_words(wp_strip_all_tags($g_video['txt']), 24) }}</p>
 		@endif
 		@if (!empty($g_video['video']))
 		<p>Wideo</p>

@@ -6,16 +6,16 @@
 			<div class="acf-preview__title">Hero - wersja angielska</div>
 			<span class="acf-preview__slug">acf/start</span>
 		</div>
-		@include('partials.block-preview-settings')
+		@includeIf('partials.block-preview-settings')
 	</div>
 	<div class="acf-preview__content">
 		@if (!empty($g_start['use_video']) && !empty($g_start['video']))
 		<p>Wideo</p>
 		@else
 		@if (!empty($g_start['image']['ID']))
-		<figure class="acf-preview__media m-0">{!! wp_get_attachment_image($g_start['image']['ID'], 'thumbnail', false, ['class' => 'h-20 w-32 object-contain']) !!}</figure>
+		<figure class="acf-preview__media m-0">{!! wp_get_attachment_image($g_start['image']['ID'], 'thumbnail', false, ['class' => 'h-20 w-32 object-cover']) !!}</figure>
 		@elseif (!empty($g_start['image']['url']))
-		<figure class="acf-preview__media m-0"><img src="{{ $g_start['image']['url'] }}" alt="{{ $g_start['image']['alt'] ?? '' }}" class="h-20 w-32 object-contain"></figure>
+		<figure class="acf-preview__media m-0"><img src="{{ $g_start['image']['url'] }}" alt="{{ $g_start['image']['alt'] ?? '' }}" class="h-20 w-32 object-cover"></figure>
 		@endif
 		@endif
 		@if (!empty($g_start['title']))

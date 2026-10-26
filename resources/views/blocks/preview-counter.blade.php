@@ -6,7 +6,7 @@
 			<div class="acf-preview__title">Licznik czasu</div>
 			<span class="acf-preview__slug">acf/counter</span>
 		</div>
-		@include('partials.block-preview-settings')
+		@includeIf('partials.block-preview-settings')
 	</div>
 	<div class="acf-preview__content">
 		@if (!empty($g_counter['date']))

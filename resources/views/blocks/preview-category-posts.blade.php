@@ -6,7 +6,7 @@
 			<div class="acf-preview__title">Baza wiedzy - Ostatnie wpisy</div>
 			<span class="acf-preview__slug">acf/category-posts</span>
 		</div>
-		@include('partials.block-preview-settings')
+		@includeIf('partials.block-preview-settings')
 	</div>
 	<div class="acf-preview__content">
 		@if (!empty($posts_settings['title']))
