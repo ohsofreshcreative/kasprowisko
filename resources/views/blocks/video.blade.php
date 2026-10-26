@@ -9,48 +9,32 @@ $sectionId = $block->data['id'] ?? null;
 $customClass = $block->data['className'] ?? '';
 @endphp
 
-<section data-gsap-anim="section" @if($sectionId) id="{{ $sectionId }}" @endif class="video -smt {{ $block->classes }} {{ $customClass }} {{ $sectionClass }}">
+<section data-gsap-anim="section" @if(!empty($section_id)) id="{{ $section_id }}" @endif class="b-video -smt {{ $block->classes }} {{ $customClass }} {{ $sectionClass }}">
 
-	<div class="__wrapper c-main">
-		<h2 data-gsap-element="header" class="mb-10 text-center">{{ $g_video['title'] }}</h2>
+	<div class="__wrapper c-main relative">
+		<div class="__col grid grid-cols-1 lg:grid-cols-2 items-center gap-10">
 
-		@if (!empty($g_video['video']))
-		<div class="video-wrapper relative">
-			<video
-				id="customVideo"
-				class="w-full">
-				<source src="{{ $g_video['video'] }}" type="video/mp4">
-				Twoja przeglądarka nie obsługuje odtwarzania wideo.
-			</video>
+			@if (!empty($g_video['video']))
+			<div class="">
+				{!! $g_video['video'] !!}
+			</div>
+			@endif
 
-			<button
-				id="customPlayBtn"
-				class="absolute inset-0 flex items-center justify-center bg-black/40 hover:bg-black/60 transition"
-				aria-label="Odtwórz wideo">
-				<img src="http://shadowcontrol.local/wp-content/uploads/2025/06/play.svg" alt="Play" class="w-20 h-20">
-			</button>
+			<div class="__content order2">
+				<p data-gsap-element="subtitle" class="subtitle-s">{{ $g_video['subtitle'] }}</p>
+				<h2 data-gsap-element="header" class="text-white m-header">{{ $g_video['title'] }}</h2>
+
+				<div data-gsap-element="txt" class="__txt text-white">
+					{!! $g_video['txt'] !!}
+				</div>
+
+				@if (!empty($g_video['button']))
+				<a data-gsap-element="btn" class="second-btn m-btn" href="{{ $g_video['button']['url'] }}" target="{{ $g_video['button']['target'] }}">{{ $g_video['button']['title'] }}</a>
+				@endif
+
+			</div>
+
 		</div>
-		@endif
-
-
 	</div>
 
 </section>
-
-<script>
-	document.addEventListener('DOMContentLoaded', function () {
-  const video = document.getElementById('customVideo');
-  const playBtn = document.getElementById('customPlayBtn');
-
-  if (video && playBtn) {
-    playBtn.addEventListener('click', () => {
-      playBtn.style.display = 'none';
-
-      // Dodaj controls i odtwórz
-      video.setAttribute('controls', 'controls');
-      video.play();
-    });
-  }
-});
-
-</script>

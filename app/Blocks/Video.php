@@ -16,7 +16,7 @@ class Video extends Block
 	public $mode = 'edit';
 	public $supports = [
 		'align' => false,
-		'mode' => false,
+		'mode' => true,
 		'jsx' => true,
 		'anchor' => true,
 		'customClassName' => true,
@@ -31,11 +31,20 @@ class Video extends Block
 			/*--- GROUP ---*/
 			->addTab('Elementy', ['placement' => 'top'])
 			->addGroup('g_video', ['label' => ''])
-
-			->addText('title', ['label' => 'Tytuł'])
-			->addFile('video', [
-				'label' => 'Wideo',
-				'return_format' => 'url',
+			->addText('subtitle', ['label' => 'Tytuł'])
+			->addText('title', ['label' => 'Nagłówek'])
+			->addWysiwyg('txt', [
+				'label' => 'Treść',
+				'tabs' => 'all', // 'visual', 'text', 'all'
+				'toolbar' => 'full', // 'basic', 'full'
+				'media_upload' => true,
+			])
+			->addLink('button', [
+				'label' => 'Przycisk',
+				'return_format' => 'array',
+			])
+			->addOembed('video', [
+				'label' => 'Wideo (oEmbed)',
 			])
 
 			->endGroup()
@@ -43,6 +52,12 @@ class Video extends Block
 			/*--- USTAWIENIA BLOKU ---*/
 
 			->addTab('Ustawienia bloku', ['placement' => 'top'])
+			->addText('section_id', [
+				'label' => 'ID',
+			])
+			->addText('section_class', [
+				'label' => 'Dodatkowe klasy CSS',
+			])
 			->addTrueFalse('flip', [
 				'label' => 'Odwrotna kolejność',
 				'ui' => 1,
@@ -75,6 +90,8 @@ class Video extends Block
 	{
 		return [
 			'g_video' => get_field('g_video'),
+			'section_id' => get_field('section_id'),
+			'section_class' => get_field('section_class'),
 			'flip' => get_field('flip'),
 			'whitebg' => get_field('whitebg'),
 			'lightbg' => get_field('lightbg'),
