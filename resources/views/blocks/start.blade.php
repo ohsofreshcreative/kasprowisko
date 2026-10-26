@@ -11,7 +11,7 @@ $backgroundImage = !empty($g_start['image']['url']) ? "linear-gradient(90deg, rg
 
 <section data-gsap-anim="section" @if(!empty($section_id)) id="{{ $section_id }}" @endif class="b-start relative {{ $sectionClass }} {{ $section_class }}" style="background-image: {{ $backgroundImage }}; background-size: cover; background-position: center;">
 
-	<div class="__wrapper c-main grid grid-cols-1 md:grid-cols-2 {{ !empty($g_start['image']) ? 'py-50' : '' }}">
+	<div class="__wrapper c-main grid grid-cols-1 md:grid-cols-2 items-center {{ !empty($g_start['image']) ? 'py-50' : '' }}">
 
 		<div class="__content relative z-10">
 			
@@ -30,7 +30,7 @@ $backgroundImage = !empty($g_start['image']['url']) ? "linear-gradient(90deg, rg
 			@endif
 		</div>
 
-		<div class="contact-form-container mt-4">
+		<div class="contact-form-container bg-primary p-10 mt-4">
 				{!! do_shortcode('[contact-form-7 id="4589bd2" title="Contact - EN"]') !!}
 			</div>
 	</div>
