@@ -36,6 +36,12 @@ class Partners extends Field
 				'wrapper' => [
 					'width' => '20',
 				],])
+			->addText('header_en', [
+				'label' => 'Nagłówek (EN)',
+				'wrapper' => [
+					'width' => '20',
+				],
+			])
 			->addRepeater('logos', [
 				'label' => 'Partnerzy',
 				'layout' => 'table',

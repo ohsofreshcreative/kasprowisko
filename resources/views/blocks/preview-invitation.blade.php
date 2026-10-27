@@ -1,44 +1,27 @@
-<!--- invitation preview --->
-
 <div class="acf-preview" @if(!empty($nomt)) data-acf-nomt @endif>
 	<div class="acf-preview__meta">
 		<div class="acf-preview__heading">
-			<div class="acf-preview__title">Zaproszenie</div>
+			<div class="acf-preview__title">{{ $block->name }}</div>
 			<span class="acf-preview__slug">acf/invitation</span>
 		</div>
-		@includeIf('partials.block-preview-settings')
+		@include('partials.block-preview-settings')
 	</div>
 	<div class="acf-preview__content">
-		@if (!empty($g_invitation['header']))
-		<p class="text-h5">{{ $g_invitation['header'] }}</p>
-		@endif
-		@if (!empty($g_invitation['txt']))
-		<p class="acf-preview__txt">{{ wp_trim_words(wp_strip_all_tags($g_invitation['txt']), 24) }}</p>
-		@endif
-		@if (!empty($g_invitation['button']['title']))
-		<div class="acf-preview-actions">
-			<span class="acf-preview-button">{{ $g_invitation['button']['title'] }}</span>
-		</div>
-		@endif
-		@if (!empty($g2_invitation['r_invitation']))
-		<div class="acf-preview__grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-			@foreach (array_slice((array) $g2_invitation['r_invitation'], 0, 4) as $item)
-			<div class="acf-preview__card flex flex-col gap-2">
-				@if (!empty($item['img']['ID']))
-				<figure class="acf-preview__media m-0">{!! wp_get_attachment_image($item['img']['ID'], 'thumbnail', false, ['class' => 'h-20 w-32 object-cover']) !!}</figure>
-				@endif
-				@if (!empty($item['title']))
-				<p class="text-h6">{{ $item['title'] }}</p>
-				@endif
-				@if (!empty($item['txt']))
-				<p class="acf-preview__txt">{{ wp_trim_words(wp_strip_all_tags($item['txt']), 24) }}</p>
-				@endif
-			</div>
-			@endforeach
-		</div>
-		@if (count((array) $g2_invitation['r_invitation']) > 4)
-		<p>+ {{ count((array) $g2_invitation['r_invitation']) - 4 }} kolejnych elementów</p>
-		@endif
-		@endif
+		@include('partials.block-preview-intro', ['preview' => [
+			'header' => $g_invitation['header'] ?? null,
+			'html' => $g_invitation['txt'] ?? null,
+			'buttons' => [$g_invitation['button'] ?? null],
+		]])
+		@php
+		$previewRows = array_map(fn ($row) => [
+			'title' => $row['title'] ?? null,
+			'text' => $row['txt'] ?? null,
+			'image' => $row['img'] ?? null,
+		], array_filter((array) ($g2_invitation['r_invitation'] ?? []), 'is_array'));
+		@endphp
+		@include('partials.block-preview-items', [
+			'previewItems' => $previewRows,
+			'previewLabel' => 'Zapraszający',
+		])
 	</div>
 </div>

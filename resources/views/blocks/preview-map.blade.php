@@ -1,19 +1,15 @@
-<!--- map preview --->
-
 <div class="acf-preview" @if(!empty($nomt)) data-acf-nomt @endif>
 	<div class="acf-preview__meta">
 		<div class="acf-preview__heading">
-			<div class="acf-preview__title">Mapa</div>
+			<div class="acf-preview__title">{{ $block->name }}</div>
 			<span class="acf-preview__slug">acf/map</span>
 		</div>
-		@includeIf('partials.block-preview-settings')
+		@include('partials.block-preview-settings')
 	</div>
 	<div class="acf-preview__content">
-		@if (!empty($g_map['title']))
-		<p class="text-h5">{{ $g_map['title'] }}</p>
-		@endif
-		@if (!empty($g_map['code']))
-		<p>Mapa osadzona z kodu</p>
-		@endif
+		@include('partials.block-preview-intro', ['preview' => [
+			'header' => $g_map['title'] ?? null,
+			'lines' => [filled($g_map['code'] ?? null) ? 'Mapa (kod osadzenia)' : null],
+		]])
 	</div>
 </div>

@@ -1,6 +1,7 @@
 @php
 // Pobieranie danych ze strony opcji
 $r_partners = get_field('r_partners', 'option');
+$is_english = strpos(get_locale(), 'en_') === 0;
 
 // Pobieranie ustawień bloku (jeśli są potrzebne)
 $section_id = get_field('section_id');
@@ -28,7 +29,9 @@ $sectionClass .= $brandbg ? ' section-brand' : '';
 		@if ($r_partners)
 		@foreach ($r_partners as $group)
 		<div class="__group mb-12">
-			@if (!empty($group['header']))
+			@if (!empty($group['header_en']) && $is_english)
+			<h3 class="text-center mb-8">{{ $group['header_en'] }}</h3>
+			@elseif (!empty($group['header']))
 			<h3 class="text-center mb-8">{{ $group['header'] }}</h3>
 			@endif
 

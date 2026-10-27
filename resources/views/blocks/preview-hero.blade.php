@@ -1,43 +1,29 @@
-<!--- hero preview --->
-
 <div class="acf-preview" @if(!empty($nomt)) data-acf-nomt @endif>
 	<div class="acf-preview__meta">
 		<div class="acf-preview__heading">
-			<div class="acf-preview__title">Hero</div>
+			<div class="acf-preview__title">{{ $block->name }}</div>
 			<span class="acf-preview__slug">acf/hero</span>
 		</div>
-		@includeIf('partials.block-preview-settings')
+		@include('partials.block-preview-settings')
 	</div>
 	<div class="acf-preview__content">
-		@if (!empty($g_hero['use_video']) && !empty($g_hero['video']))
-		<p>Wideo</p>
-		@elseif (!empty($g_hero['image']['ID']))
-		<figure class="acf-preview__media m-0">{!! wp_get_attachment_image($g_hero['image']['ID'], 'thumbnail', false, ['class' => 'h-20 w-32 object-cover']) !!}</figure>
-		@endif
-		@if (!empty($g_hero['title']))
-		<p class="text-h5">{{ $g_hero['title'] }}</p>
-		@endif
-		@if (!empty($g_hero['subtitle']))
-		<p>{{ wp_strip_all_tags($g_hero['subtitle']) }}</p>
-		@endif
-		@if (!empty($g_hero['txt']))
-		<p class="acf-preview__txt">{{ wp_trim_words(wp_strip_all_tags($g_hero['txt']), 24) }}</p>
-		@endif
-		@if (!empty($g_hero['date']))
-		<p>{{ wp_strip_all_tags($g_hero['date']) }}</p>
-		@endif
-		@if (!empty($g_hero['place']))
-		<p>{{ wp_strip_all_tags($g_hero['place']) }}</p>
-		@endif
-		@if (!empty($g_hero['button1']['title']) || !empty($g_hero['button2']['title']))
-		<div class="acf-preview-actions">
-			@if (!empty($g_hero['button1']['title']))
-			<span class="acf-preview-button">{{ $g_hero['button1']['title'] }}</span>
-			@endif
-			@if (!empty($g_hero['button2']['title']))
-			<span class="acf-preview-button">{{ $g_hero['button2']['title'] }}</span>
-			@endif
-		</div>
-		@endif
+		@php
+		$previewUseVideo = !empty($g_hero['use_video'] ?? null);
+		$previewVideo = $g_hero['video'] ?? null;
+		$previewVideoUrl = is_array($previewVideo) ? ($previewVideo['url'] ?? null) : $previewVideo;
+		@endphp
+		@include('partials.block-preview-intro', ['preview' => [
+			'header' => $g_hero['title'] ?? null,
+			'subheader' => $g_hero['subtitle'] ?? null,
+			'text' => $g_hero['txt'] ?? null,
+			'lines' => [
+				$g_hero['date'] ?? null,
+				$g_hero['place'] ?? null,
+				$previewUseVideo && filled($previewVideoUrl) ? 'Wideo: ' . $previewVideoUrl : null,
+			],
+			'buttons' => [$g_hero['button1'] ?? null, $g_hero['button2'] ?? null],
+			'image' => $previewUseVideo ? ($g_hero['video_poster'] ?? null) : ($g_hero['image'] ?? null),
+			'flip' => $flip ?? false,
+		]])
 	</div>
 </div>

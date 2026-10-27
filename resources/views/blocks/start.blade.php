@@ -25,7 +25,7 @@ $backgroundImage = !empty($g_start['image']['url']) ? "linear-gradient(90deg, rg
                         <img src="/wp-content/uploads/2025/11/calendar.svg" />
                     </div>
                     <div class="text-white">
-                        {!! $g_hero['date'] !!}
+                        {!! $g_start['date'] !!}
                     </div>
                 </div>
                 <div class="flex items-center gap-2">
@@ -33,7 +33,7 @@ $backgroundImage = !empty($g_start['image']['url']) ? "linear-gradient(90deg, rg
                         <img src="/wp-content/uploads/2025/11/place.svg" />
                     </div>
                     <div class="">
-                        <a class="text-white !underline" target="_blank" href="{!! $g_hero['link'] !!}">{!! $g_hero['place'] !!}</a>
+                        <a class="text-white !underline" target="_blank" href="{!! $g_start['link'] !!}">{!! $g_start['place'] !!}</a>
                     </div>
                 </div>
             </div>

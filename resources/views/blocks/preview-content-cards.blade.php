@@ -1,45 +1,23 @@
-<!--- content-cards preview --->
-
 <div class="acf-preview" @if(!empty($nomt)) data-acf-nomt @endif>
 	<div class="acf-preview__meta">
 		<div class="acf-preview__heading">
-			<div class="acf-preview__title">Treść + Kafelki</div>
+			<div class="acf-preview__title">{{ $block->name }}</div>
 			<span class="acf-preview__slug">acf/content-cards</span>
 		</div>
-		@includeIf('partials.block-preview-settings')
+		@include('partials.block-preview-settings')
 	</div>
 	<div class="acf-preview__content">
-		@if (!empty($textimg['image']['ID']))
-		<figure class="acf-preview__media m-0">{!! wp_get_attachment_image($textimg['image']['ID'], 'thumbnail', false, ['class' => 'h-20 w-32 object-cover']) !!}</figure>
-		@endif
-		@if (!empty($textimg['title']))
-		<p class="text-h5">{{ $textimg['title'] }}</p>
-		@endif
-		@if (!empty($textimg['content']))
-		<p class="acf-preview__txt">{{ wp_trim_words(wp_strip_all_tags($textimg['content']), 24) }}</p>
-		@endif
-		@if (!empty($tiles['title']))
-		<p class="text-h5">{{ $tiles['title'] }}</p>
-		@endif
-		@if (!empty($tiles['repeater']))
-		<div class="acf-preview__grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-			@foreach (array_slice((array) $tiles['repeater'], 0, 4) as $item)
-			<div class="acf-preview__card flex flex-col gap-2">
-				@if (!empty($item['card_image']['ID']))
-				<figure class="acf-preview__media m-0">{!! wp_get_attachment_image($item['card_image']['ID'], 'thumbnail', false, ['class' => 'h-20 w-32 object-cover']) !!}</figure>
-				@endif
-				@if (!empty($item['card_title']))
-				<p class="text-h6">{{ $item['card_title'] }}</p>
-				@endif
-				@if (!empty($item['card_txt']))
-				<p class="acf-preview__txt">{{ wp_trim_words(wp_strip_all_tags($item['card_txt']), 24) }}</p>
-				@endif
-			</div>
-			@endforeach
-		</div>
-		@if (count((array) $tiles['repeater']) > 4)
-		<p>+ {{ count((array) $tiles['repeater']) - 4 }} kolejnych elementów</p>
-		@endif
-		@endif
+		@include('partials.block-preview-intro', ['preview' => [
+			'header' => $textimg['title'] ?? null,
+			'html' => $textimg['content'] ?? null,
+			'image' => $textimg['image'] ?? null,
+			'flip' => $flip ?? false,
+		]])
+		@php $previewRows = array_map(fn ($row) => ['title' => $row['card_title'] ?? null, 'text' => $row['card_txt'] ?? null, 'image' => $row['card_image'] ?? null], array_filter((array) ($tiles['repeater'] ?? []), 'is_array')); @endphp
+		@include('partials.block-preview-items', [
+			'previewItems' => $previewRows,
+			'previewLabel' => 'Kafelki',
+			'previewLimit' => 4,
+		])
 	</div>
 </div>

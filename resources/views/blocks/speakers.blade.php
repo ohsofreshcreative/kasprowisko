@@ -17,7 +17,7 @@ $sectionClass .= ' ' . $background;
 
 	<div class="__wrapper c-main">
 		<div class="">
-			<p class="subtitle-s">{{ strip_tags($g_speakers['header']) }}</p>
+			<p class="subtitle-s">{{ strip_tags($g_speakers['title']) }}</p>
 			@if (!empty($g_speakers['header']))
 			<h3 class="text-white">{{ strip_tags($g_speakers['header']) }}</h3>
 			@endif
