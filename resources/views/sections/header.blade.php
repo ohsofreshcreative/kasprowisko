@@ -1,6 +1,7 @@
 @php
 use App\Walkers\DropdownWalker;
 use App\Walkers\MobileDropdownWalker;
+$is_english = strpos(get_locale(), 'en_') === 0;
 @endphp
 
 <header x-data="{ mobileOpen: false }" class="relative top-0 z-50 bg-white masthead fixed-top">
@@ -28,11 +29,13 @@ use App\Walkers\MobileDropdownWalker;
 		@endif
 
 
-			<div class="">
-				<a href="/produkt/zarejestruj-sie/" class="block w-full white-btn-s !px-4">
-					Zarejestruj się
-				</a>
-			</div>
+			@if (!$is_english)
+				<div class="">
+					<a href="/produkt/zarejestruj-sie/" class="block w-full white-btn-s !px-4">
+						Zarejestruj się
+					</a>
+				</div>
+			@endif
 	</div>
 
 	<!-- Mobile Header Bar -->
@@ -98,11 +101,13 @@ use App\Walkers\MobileDropdownWalker;
 			</nav>
 			@endif
 
-			<div class="mt-8">
-				<a href="/produkt/zarejestruj-sie/" class="block w-full second-btn">
-					Zarejestruj się
-				</a>
-			</div>
+			@if (!$is_english)
+				<div class="mt-8">
+					<a href="/produkt/zarejestruj-sie/" class="block w-full second-btn">
+						Zarejestruj się
+					</a>
+				</div>
+			@endif
 		</div>
 
 	</div>
