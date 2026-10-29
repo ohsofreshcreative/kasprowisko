@@ -21,6 +21,25 @@ class MobileDropdownWalker extends Walker_Nav_Menu
     public function start_el(&$output, $item, $depth = 0, $args = null, $id = 0)
     {
         $has_children = in_array('menu-item-has-children', $item->classes);
+        $title = esc_html($item->title);
+
+        if (in_array('polylang-item', $item->classes, true)) {
+            $title = wp_kses(
+                $item->title,
+                [
+                    'span' => ['class' => true, 'style' => true],
+                    'img' => [
+                        'src' => true,
+                        'alt' => true,
+                        'width' => true,
+                        'height' => true,
+                        'style' => true,
+                    ],
+                ],
+                array_merge(wp_allowed_protocols(), ['data'])
+            );
+        }
+
         // Przekazujemy ID elementu do start_lvl
         $args->item_id = $item->ID;
 
@@ -35,7 +54,7 @@ class MobileDropdownWalker extends Walker_Nav_Menu
             
             // Link do strony nadrzędnej – zajmuje większość miejsca.
             $output .= '<span class="text-white text-xl flex-grow py-1 pr-4">';
-            $output .= esc_html($item->title);
+            $output .= $title;
             $output .= '</span>';
             
             // Osobny przycisk ze strzałką, który rozwija/zwija submenu.
@@ -51,7 +70,7 @@ class MobileDropdownWalker extends Walker_Nav_Menu
         else {
             $output .= '<li>';
             $output .= '<a href="' . esc_attr($item->url) . '" class="block py-1 text-white text-xl">';
-            $output .= esc_html($item->title);
+            $output .= $title;
             $output .= '</a>';
         }
     }

@@ -22,6 +22,25 @@ class DropdownWalker extends Walker_Nav_Menu
     public function start_el(&$output, $item, $depth = 0, $args = null, $id = 0)
     {
         $has_children = in_array('menu-item-has-children', $item->classes);
+        $title = esc_html($item->title);
+
+        if (in_array('polylang-item', $item->classes, true)) {
+            $title = wp_kses(
+                $item->title,
+                [
+                    'span' => ['class' => true, 'style' => true],
+                    'img' => [
+                        'src' => true,
+                        'alt' => true,
+                        'width' => true,
+                        'height' => true,
+                        'style' => true,
+                    ],
+                ],
+                array_merge(wp_allowed_protocols(), ['data'])
+            );
+        }
+
         $li_classes = empty($item->classes) ? '' : ' class="' . esc_attr(implode(' ', $item->classes)) . '"';
 
         // Case 1: Element jest na najwyższym poziomie i ma dzieci (jest dropdownem)
@@ -33,7 +52,7 @@ class DropdownWalker extends Walker_Nav_Menu
             // Zamiast <button> używamy <a> z linkiem do strony nadrzędnej.
             // Usunęliśmy `@click`, aby kliknięcie powodowało standardową nawigację.
             $output .= '<a href="' . esc_attr($item->url) . '" class="inline-flex !text-white items-center gap-x-1 text-sm font-medium hover:text-indigo-600">';
-            $output .= esc_html($item->title);
+            $output .= $title;
             $output .= '<svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" /></svg>';
             $output .= '</a>';
             // ### KONIEC ZMIANY ###
@@ -51,7 +70,7 @@ class DropdownWalker extends Walker_Nav_Menu
             }
 
             $output .= '<a href="' . esc_attr($item->url) . '" class="' . esc_attr($link_classes) . '">';
-            $output .= esc_html($item->title);
+            $output .= $title;
             $output .= '</a>';
         }
     }
